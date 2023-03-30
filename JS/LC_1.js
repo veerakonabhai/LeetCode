@@ -18,12 +18,12 @@ let nums = [2, 9, 7, 11, 3, 15];
 let target = 20;
 var twoSum = function (nums, target) {
     const mp = {}
-
+    // for loop to put all the differences into above object
     for (let i = 0; i < nums.length; i++) {
         const diff = target - nums[i]
-
+        // if a difference is already present returns it's indices 
         if (diff in mp) return [mp[diff], i]
-
+        //if not then add the difference into object
         mp[nums[i]] = i
     }
 };

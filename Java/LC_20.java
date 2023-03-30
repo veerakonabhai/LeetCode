@@ -25,10 +25,13 @@ public class LC_20 {
         for (int i = 0; i < s.length(); i++) {
             char bracket = s.charAt(i);
             if (bracket == '[' || bracket == '{' || bracket == '(') {
+                // insert all the open brackets into stack
                 stack.push(bracket);
             } else {
+                // if stack is empty return false as we are seeing an closed bracket but there is no open bracket in stack
                 if (stack.isEmpty())
                     return false;
+                // see for each closed bracket if it's counter open bracket is not there then return false
                 char returnedBracket = stack.pop();
                 if (returnedBracket == '(' && s.charAt(i) != ')')
                     return false;

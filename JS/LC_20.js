@@ -18,7 +18,11 @@
  * @return {boolean}
  */
 var isValid = function (s) {
-    let resultStack = [];
+    //for odd length return false
+    if(s.length%2 !==0) return false
+    
+    const resultStack = [];
+    /* //here we check and add all open brackets into stack
     for (let i = 0; i < s.length; i++) {
         let char = s[i];
         if (char === '(' || char === '{' || char === '['){
@@ -32,10 +36,41 @@ var isValid = function (s) {
             if(returnedChar === undefined) return false;
         }
     }
-    return resultStack.length === 0;
+    return resultStack.length === 0; */
+
+    for (let index = 0; index < s.length; index++) {
+        const char = s[index];
+        //for each open bracket add it's respective closed bracket into stack
+        /* if(char === '('){
+            resultStack.push(')');
+        }else if(char === '{'){
+            resultStack.push('}');
+        }else if(char === '['){
+            resultStack.push(']');
+        }else{
+            if(char !== resultStack.pop()){
+                return false;
+            }
+        } */
+        switch (char) {
+            case '(':
+                resultStack.push(')');
+                break;
+            case '{':
+                resultStack.push('}');
+                break;
+            case '[':
+                resultStack.push(']');
+                break;
+            default:
+                if(char !== resultStack.pop()) return false;
+                break;
+        }
+    }
+    return (resultStack.length === 0);
 };
 
 console.log(isValid('{[]}()')); //true
 console.log(isValid('{[]})(')); //false
-console.log(isValid('{([')); //false
+console.log(isValid('{(')); //false
 console.log(isValid(')}]')); //false
