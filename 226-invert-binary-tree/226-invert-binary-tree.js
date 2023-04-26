@@ -11,7 +11,7 @@
  * @return {TreeNode}
  */
 var invertTree = function(root) {
-    if(root == null){
+    /*if(root == null){
         return root;
     }
     
@@ -21,5 +21,11 @@ var invertTree = function(root) {
     const curr = root.left;
     root.left = root.right;
     root.right = curr;
+    return root;*/
+    
+    //calling the recursion and swapping done in one line
+    if(root){
+        [root.left, root.right] = [invertTree(root.right), invertTree(root.left)];
+    }
     return root;
 };
