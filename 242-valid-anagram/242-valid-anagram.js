@@ -8,6 +8,7 @@ var isAnagram = function(s, t) {
     if(s.length !== t.length) return false;
     
     //using map and for loops to iterate over
+    /*
     let map = {};
     for(let i = 0; i < s.length; i++){
         let letter = s[i];
@@ -23,4 +24,8 @@ var isAnagram = function(s, t) {
         map[letter]--;
     }
     return true;
+    */
+    
+    //using one liner sort
+    return s.split('').sort().join('') === t.split('').sort().join('');
 };
