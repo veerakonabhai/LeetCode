@@ -36,9 +36,12 @@ class Solution {
                 return false;
             }
             tl++;
-        }*/
+        }
+        return solMap.isEmpty();
+        */
         
         //using for loop
+        /*
         Map<Character, Integer> solMap = new HashMap<>();
         for(int i = 0; i < s.length(); i++){
             if(solMap.containsKey(s.charAt(i))){
@@ -63,7 +66,17 @@ class Solution {
             }
         }
         return solMap.isEmpty();
+        */
         
-        
+        //create a array with 26 character for alphabets and use for loop to get over the strings
+        int[] count = new int[26];
+        for(int i = 0; i < s.length(); i++){
+            count[s.charAt(i) - 'a']++;
+            count[t.charAt(i) - 'a']--;
+        }
+        for(int i : count){
+            if(i != 0) return false;
+        }
+        return true;
     }
 }
