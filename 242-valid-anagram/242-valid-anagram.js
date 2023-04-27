@@ -27,5 +27,19 @@ var isAnagram = function(s, t) {
     */
     
     //using one liner sort
-    return s.split('').sort().join('') === t.split('').sort().join('');
+    //return s.split('').sort().join('') === t.split('').sort().join('');
+    
+    //using array for the alphabets
+    const count = [];
+    for(let c of s){
+        let i = c.charCodeAt(0) - 'a'.charCodeAt(0);
+        count[i] = (count[i] || 0) + 1;
+    }
+    for(let c of t){
+        let i = c.charCodeAt(0) - 'a'.charCodeAt(0);
+        if(!count[i]) return false
+        count[i]--;
+    }
+    return true;
+    
 };
