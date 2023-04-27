@@ -1,6 +1,14 @@
 class Solution {
     public boolean isAnagram(String s, String t) {
         
+        //base case
+        if(s.length() != t.length()){
+            return false;
+        }
+        
+        
+        //using 2 while loops to iterate over and check
+        /*
         Map<Character, Integer> solMap = new HashMap<>();
         int sl = 0;
         while(sl < s.length()){
@@ -28,8 +36,32 @@ class Solution {
                 return false;
             }
             tl++;
-        }
+        }*/
         
+        //using for loop
+        Map<Character, Integer> solMap = new HashMap<>();
+        for(int i = 0; i < s.length(); i++){
+            if(solMap.containsKey(s.charAt(i))){
+                int val = solMap.get(s.charAt(i));
+                val++;
+                solMap.replace(s.charAt(i), val);
+            }else{
+                solMap.put(s.charAt(i), 1);
+            }
+        }
+        for(int i = 0; i < t.length(); i++){
+            if(solMap.containsKey(t.charAt(i))){
+                int val = solMap.get(t.charAt(i));
+                if(val == 1){
+                    solMap.remove(t.charAt(i));
+                }else{
+                val--;
+                solMap.replace(t.charAt(i), val);
+                }
+            }else{
+                return false;
+            }
+        }
         return solMap.isEmpty();
         
         
