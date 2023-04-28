@@ -4,7 +4,8 @@
  * @return {number}
  */
 var search = function(nums, target) {
-    let left = 0;
+    //using two pointers
+    /*let left = 0;
     let right = nums.length - 1;
     let mid = 0;
     while(left <= right){
@@ -18,4 +19,8 @@ var search = function(nums, target) {
         }
     }
      return -1;
+     */
+    
+    //using inbuilt function
+    return nums.indexOf(target);
 };
