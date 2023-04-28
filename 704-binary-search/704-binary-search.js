@@ -9,7 +9,7 @@ var search = function(nums, target) {
     let mid = 0;
     while(left <= right){
         mid = left + Math.floor((right - left)/2);
-        if(nums[mid] === target){
+        if(nums[mid] == target){
             return mid;
         }else if(nums[mid] < target){
             left = mid + 1;
