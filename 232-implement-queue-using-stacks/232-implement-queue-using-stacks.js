@@ -16,13 +16,12 @@ MyQueue.prototype.push = function(x) {
  * @return {number}
  */
 MyQueue.prototype.pop = function() {
+    if(this.stack2.length === 0){
     while(this.stack1.length != 0){
         this.stack2.push(this.stack1.pop());
     }
+}
     let data = this.stack2.pop();
-    while(this.stack2.length != 0){
-        this.stack1.push(this.stack2.pop());
-    }
     return data;
 };
 
@@ -30,14 +29,13 @@ MyQueue.prototype.pop = function() {
  * @return {number}
  */
 MyQueue.prototype.peek = function() {
+    if(this.stack2.length === 0){
     while(this.stack1.length != 0){
         this.stack2.push(this.stack1.pop());
     }
+    }
     let data = this.stack2.pop();
     this.stack2.push(data);
-    while(this.stack2.length != 0){
-        this.stack1.push(this.stack2.pop());
-    }
     return data;
 };
 
@@ -45,7 +43,7 @@ MyQueue.prototype.peek = function() {
  * @return {boolean}
  */
 MyQueue.prototype.empty = function() {
-    return this.stack1.length === 0; 
+    return (this.stack1.length === 0 && this.stack2.length === 0) ? true : false; 
 };
 
 /** 
