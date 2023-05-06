@@ -13,12 +13,12 @@
 var isBalanced = function(root) {
     return height(root) != -1;
 };
-var height = function(root){
-        if(root == null){
+const height = function(root){
+        if(!root){
             return 0; //balanced
         }
-        let left = height(root.left);
-        let right = height(root.right);
+        const left = height(root.left);
+        const right = height(root.right);
         if(Math.abs(left - right) > 1 || left === -1 || right === -1){
             return -1; //unbalanced
         }
