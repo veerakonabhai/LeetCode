@@ -1,6 +1,5 @@
 # Write your MySQL query statement below
-SELECT 
-    DISTINCT p.product_name, s.year, s.price
+SELECT p.product_name, s.year, s.price
 FROM 
     Sales s
 JOIN 
